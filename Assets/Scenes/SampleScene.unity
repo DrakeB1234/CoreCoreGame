@@ -264,8 +264,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserPrefab: {fileID: 2131338418899831399, guid: 8501ac2a26634b8408cafb28a4477fa7, type: 3}
+  projectileEyePrefab: {fileID: 9008595452118783459, guid: 45afecd76c2009747a9be678a190f9ec, type: 3}
   corePos: {fileID: 817987588}
+  coreParentPos: {fileID: 1193522650}
   laserSpawnTime: 8
+  projectileEyeSpawnTime: 3
+  coreLifeTime: 180
 --- !u!4 &77743282
 Transform:
   m_ObjectHideFlags: 0
@@ -731,6 +735,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 3226155508205897921, guid: 6b39e5216bcdffc4b8682f2b0bd6ff45, type: 3}
   m_PrefabInstance: {fileID: 3226155508998719684}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1193522650 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3226155510192045342, guid: 6b39e5216bcdffc4b8682f2b0bd6ff45, type: 3}
+  m_PrefabInstance: {fileID: 3226155508998719684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1611765910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,6 +1191,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1996240453, guid: ad9cbdb5e1fcc4d4991bc1111f62a42e, type: 3}
+      propertyPath: invincibilityTimer
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916207832598716862, guid: ad9cbdb5e1fcc4d4991bc1111f62a42e, type: 3}
+      propertyPath: orthographic size
+      value: 5.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1916207833956001610, guid: ad9cbdb5e1fcc4d4991bc1111f62a42e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1477,7 +1494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3226155510192045343, guid: 6b39e5216bcdffc4b8682f2b0bd6ff45, type: 3}
       propertyPath: randomAnimationTime
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b39e5216bcdffc4b8682f2b0bd6ff45, type: 3}

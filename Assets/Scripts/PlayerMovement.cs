@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     private void Awake() 
     {
         _PlayerRB = GetComponent<Rigidbody2D>();
+
+        Application.targetFrameRate = 60;
     }
 
     private void Update() 
@@ -56,8 +58,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Check if player is falling and animator bool is false
-        if (_PlayerRB.velocity.y < 0 && !_CharacterAnimator.GetBool("isJumping"))
+        if (_PlayerRB.velocity.y < 0 && _CharacterAnimator.GetBool("isJumping") == false)
         {
+            // Set animator bool
+            _CharacterAnimator.SetBool("isJumping", true);
             // Set animator trigger fall
             _CharacterAnimator.SetTrigger("fallTrigger");
         }

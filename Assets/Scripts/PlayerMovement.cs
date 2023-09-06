@@ -42,6 +42,25 @@ public class PlayerMovement : MonoBehaviour
             _PlayerRB.velocity = new Vector2(_PlayerRB.velocity.x, jetpackForce);
             currentJetpackTime -= Time.deltaTime;
         }
+        else
+        {
+            // Set animator bool
+            _CharacterAnimator.SetBool("isJetpackTime", false);
+        }
+
+        // Check if player is grounded
+        if (_PlayerRB.velocity.y == 0)
+        {
+            // Set animator bool
+            _CharacterAnimator.SetBool("isJumping", false);
+        }
+
+        // Check if player is falling and animator bool is false
+        if (_PlayerRB.velocity.y < 0 && !_CharacterAnimator.GetBool("isJumping"))
+        {
+            // Set animator trigger fall
+            _CharacterAnimator.SetTrigger("fallTrigger");
+        }
     }
 
     public void PlayerMove(InputAction.CallbackContext context)
@@ -70,6 +89,11 @@ public class PlayerMovement : MonoBehaviour
             // Reset jetpack time
             currentJetpackTime = jetpackTime;
 
+            // Set animator bool
+            _CharacterAnimator.SetBool("isJumping", true);
+            // Set animator to trigger jump animation
+            _CharacterAnimator.SetTrigger("jumpTrigger");
+
             _PlayerRB.velocity = new Vector2(_PlayerRB.velocity.x, jumpForce);
             return;
         }
@@ -77,9 +101,17 @@ public class PlayerMovement : MonoBehaviour
         else if (context.performed)
         {
             isJetpackHold = true;
+
+            // Set animator bool
+            _CharacterAnimator.SetBool("isJetpackTime", true);
+            // Set animator to trigger jetpack animation
+            _CharacterAnimator.SetTrigger("jetpackTrigger");
         }
         else if (context.canceled)
         {
+            // Set animator bool
+            _CharacterAnimator.SetBool("isJetpackTime", false);
+
             isJetpackHold = false;
         }
     }

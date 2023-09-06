@@ -1,18 +1,28 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject laserPrefab;
+    [SerializeField]
+    private Transform corePos;
+    [SerializeField]
+    private float laserSpawnTime;
+    
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        StartCoroutine("LaserSpawn");
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator LaserSpawn()
     {
-        
+        while (true)
+        {
+            yield return new WaitForSeconds(laserSpawnTime);
+
+            Instantiate(laserPrefab, corePos);
+        }
     }
 }

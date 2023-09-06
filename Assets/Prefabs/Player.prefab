@@ -1691,9 +1691,10 @@ GameObject:
   - component: {fileID: 1916207833956001614}
   - component: {fileID: 1916207833956001615}
   - component: {fileID: 1916207833956001612}
+  - component: {fileID: 1996240453}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1895,6 +1896,22 @@ MonoBehaviour:
     m_Bits: 8
   groundPos: {fileID: 1916207833409453469}
   _CharacterAnimator: {fileID: 1916207832852049380}
+--- !u!114 &1996240453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916207833956001610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78adffbbb63910440b6bd59e70e15e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  invincibilityTimer: 1
+  characterHeadSprite: {fileID: 1916207834028601229}
+  currentHealth: 0
 --- !u!1 &1916207834001497563
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,7 +2072,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -283584844, guid: ff4eb649ec9374f47ac76c0ed410e80b, type: 3}
-  m_Color: {r: 0.56252563, g: 1, b: 0.45882356, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.101960786, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

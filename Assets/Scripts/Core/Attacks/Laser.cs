@@ -35,9 +35,10 @@ public class Laser : MonoBehaviour
         {
             hit = Physics2D.Raycast(transform.position, fireDirection); 
 
+            // If object is hit, and its tag is player, get its health components and call damage function
             if (hit && hit.transform.gameObject.CompareTag("Player"))
             {
-                Debug.Log("Player Hit!");
+                hit.transform.gameObject.GetComponent<PlayerHealth>().TakeDamage();
             }
         }
     }

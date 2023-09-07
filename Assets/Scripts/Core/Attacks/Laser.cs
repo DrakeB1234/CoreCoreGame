@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Laser : MonoBehaviour
@@ -33,7 +34,7 @@ public class Laser : MonoBehaviour
         // Will only call raycast when laser is fired from aim script (saves performance)
         if (laserOn)
         {
-            hit = Physics2D.Raycast(transform.position, fireDirection); 
+            hit = Physics2D.Raycast(transform.position, fireDirection, 30, 3); 
 
             // If object is hit, and its tag is player, get its health components and call damage function
             if (hit && hit.transform.gameObject.CompareTag("Player"))

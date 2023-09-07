@@ -73,7 +73,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 451300477
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 9
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -107,7 +107,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9150943, g: 0.33236915, b: 0.68749285, a: 1}
+      key0: {r: 0.3066038, g: 0.7443951, b: 1, a: 1}
       key1: {r: 0.9150943, g: 0.33236915, b: 0.68749285, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}

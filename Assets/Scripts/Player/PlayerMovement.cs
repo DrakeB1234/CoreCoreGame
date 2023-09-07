@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private Transform groundPos;
     [SerializeField]
     private Animator _CharacterAnimator;
+    [SerializeField]
+    private Animator _CameraAnimator;
 
     private Rigidbody2D _PlayerRB;
     private float horizontalInput;
@@ -106,6 +108,8 @@ public class PlayerMovement : MonoBehaviour
 
             // Set animator bool
             _CharacterAnimator.SetBool("isJetpackTime", true);
+            _CameraAnimator.SetBool("isRumble", true);
+
             // Set animator to trigger jetpack animation
             _CharacterAnimator.SetTrigger("jetpackTrigger");
         }
@@ -113,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Set animator bool
             _CharacterAnimator.SetBool("isJetpackTime", false);
+            _CameraAnimator.SetBool("isRumble", false);
 
             isJetpackHold = false;
         }

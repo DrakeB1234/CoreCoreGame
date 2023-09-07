@@ -4,8 +4,7 @@ public class AimLaser : MonoBehaviour
 {
     [SerializeField]
     private LineRenderer lineRenderer;
-    [SerializeField]
-    private float aimTime;
+    public float aimTime;
 
     [HideInInspector]
     public GameObject Player;
@@ -15,7 +14,9 @@ public class AimLaser : MonoBehaviour
     private void Awake() 
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        Invoke("DestroyObj", aimTime);
+
+        // Random number for aim time
+        Invoke("DestroyObj", Random.Range(1.5f, aimTime));
     }
 
     // Creates a line pointing at the player

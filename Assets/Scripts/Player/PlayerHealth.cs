@@ -18,6 +18,9 @@ public class PlayerHealth : MonoBehaviour
     private void Awake() 
     {
         currentHealth = maxHealth;    
+
+        // Green Color
+        characterHeadSprite.color = new Color(100 / 255f, 217 / 255f, 112 / 255f);
     }
 
     public void TakeDamage()

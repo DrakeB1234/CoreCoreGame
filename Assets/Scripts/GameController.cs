@@ -8,13 +8,19 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject projectileEyePrefab;
     [SerializeField]
+    private GameObject walkingEyePrefab;
+    [SerializeField]
     private Transform corePos;
     [SerializeField]
     private Transform coreParentPos;
     [SerializeField]
+    private Transform projectileSpawnPos;
+    [SerializeField]
     private float laserSpawnTime;
     [SerializeField]
     private float projectileEyeSpawnTime;
+    [SerializeField]
+    private float walkingEyeSpawnTime;
     [SerializeField]
     private CoreController coreController;
 
@@ -31,7 +37,7 @@ public class GameController : MonoBehaviour
         mainCamera = Camera.main;
         cameraFollowScript = mainCamera.GetComponent<CameraFollow>();
         
-        StartCoroutine("GameCountdown");    
+        StartCoroutine("GameCountdown");  
     }
 
     // Evaulates the stage every second, increments game time var
@@ -59,8 +65,9 @@ public class GameController : MonoBehaviour
                 currentStage++;
 
                 laserSpawnTime--;
-                StartCoroutine("LaserSpawn");    // Spawning in a second laser spawn
+
                 StartCoroutine("ProjectileEyeSpawn");
+                StartCoroutine("WalkingEyeSpawn");  
             }
             // Stage Three 30 seconds
             else if (currentGameTime >= 60 && currentStage == 2)
@@ -68,9 +75,11 @@ public class GameController : MonoBehaviour
                 Debug.Log("Final Stage");
                 currentStage++;
 
-                laserSpawnTime--;
                 projectileEyeSpawnTime--;
+                walkingEyeSpawnTime--;
+
                 StartCoroutine("ProjectileEyeSpawn");
+                StartCoroutine("LaserSpawn");
             }
             // END
             else if (currentGameTime >= 90 && currentStage == 3)
@@ -100,6 +109,16 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(projectileEyeSpawnTime);
 
             Instantiate(projectileEyePrefab, coreParentPos);
+        }
+    }
+
+    IEnumerator WalkingEyeSpawn()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(walkingEyeSpawnTime);
+
+            Instantiate(walkingEyePrefab, projectileSpawnPos);
         }
     }
 

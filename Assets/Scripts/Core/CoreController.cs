@@ -30,4 +30,12 @@ public class CoreController : MonoBehaviour
             yield return new WaitForSeconds(randomAnimationTime);
         }
     }
+
+    public void DeathAnimation()
+    {
+        StopAllCoroutines();
+        animator.SetInteger("randomAnimation", 0);
+
+        animator.SetTrigger("foreverLaughTrigger");
+    }
 }

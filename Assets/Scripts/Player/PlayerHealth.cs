@@ -9,6 +9,10 @@ public class PlayerHealth : MonoBehaviour
     private float invincibilityTimer;
     [SerializeField]
     private SpriteRenderer characterHeadSprite;
+    [SerializeField]
+    private Animator characterAnimator;
+    [SerializeField]
+    private GameController gameController;
 
     [HideInInspector]
     public int currentHealth;
@@ -46,6 +50,8 @@ public class PlayerHealth : MonoBehaviour
                 // White Color
                 characterHeadSprite.color = new Color(255 / 255f, 255 / 255f, 255 / 255f);
                 // Function to handle player death
+
+                gameController.DestroyCore();
             }
         }
     }
@@ -53,7 +59,14 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator invincibleTimer()
     {
         isInvincible = true;
+        // Set animator bool
+        characterAnimator.SetBool("isImmune", true);
+        characterAnimator.SetTrigger("immuneTrigger");
+
         yield return new WaitForSeconds(invincibilityTimer);
+
         isInvincible = false;
+        // Set animator bool
+        characterAnimator.SetBool("isImmune", false);
     }
 }

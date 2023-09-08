@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private float jetpackForce;
     [SerializeField]
     private float jetpackTime;
+    [SerializeField]
+    private float colliderDisableTime;
 
     [SerializeField] 
     private LayerMask groundLayer;
@@ -22,14 +25,17 @@ public class PlayerMovement : MonoBehaviour
     private Animator _CameraAnimator;
 
     private Rigidbody2D _PlayerRB;
+    private BoxCollider2D _PlayerCollider;
     private float horizontalInput;
     private bool isFacingRight;
     private bool isJetpackHold;
+    private bool isOnPlatform;
     private float currentJetpackTime;
 
     private void Awake() 
     {
         _PlayerRB = GetComponent<Rigidbody2D>();
+        _PlayerCollider = GetComponent<BoxCollider2D>();
 
         Application.targetFrameRate = 60;
     }
@@ -123,9 +129,47 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void DisableCollider(InputAction.CallbackContext context)
+    {
+        // Ensure player is on top of an object that can be traveled down through
+        if (isOnPlatform)
+        {
+            _PlayerCollider.enabled = false;
+
+            StartCoroutine("TempDisableCollider");
+        }
+    }
+
+    // Handle Disable collider
+    IEnumerator TempDisableCollider()
+    {
+        // After time, renable player collider
+        yield return new WaitForSeconds(colliderDisableTime); 
+        _PlayerCollider.enabled = true;
+    }
+
     public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundPos.position, 0.2f, groundLayer);
+    }
+
+    // Collider Handler
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
+        // Temp disable collider to allow player to travel down through platform
+        if(other.gameObject.CompareTag("Platform"))
+        {
+            isOnPlatform = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other) 
+    {
+        // Temp disable collider to allow player to travel down through platform
+        if(other.gameObject.CompareTag("Platform"))
+        {
+            isOnPlatform = false;
+        }
     }
 
     private void FlipPlayer()

@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour
     private float laserSpawnTime;
     [SerializeField]
     private float projectileEyeSpawnTime;
+    [SerializeField]
+    private CoreController coreController;
 
     private float currentGameTime;
     private int currentStage;
@@ -97,5 +99,8 @@ public class GameController : MonoBehaviour
     {
         // Destroy Function
         StopAllCoroutines();
+
+        // Stop core random animations, start death animation
+        coreController.DeathAnimation();
     }
 }

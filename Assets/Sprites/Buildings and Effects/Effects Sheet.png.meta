@@ -132,10 +132,10 @@ TextureImporter:
       name: Effects Sheet_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 42
-        width: 276
-        height: 313
+        x: 45
+        y: 79
+        width: 274
+        height: 312
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,10 +153,10 @@ TextureImporter:
       name: Effects Sheet_1
       rect:
         serializedVersion: 2
-        x: 333
-        y: 21
-        width: 304
-        height: 358
+        x: 359
+        y: 58
+        width: 303
+        height: 359
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,6 +166,48 @@ TextureImporter:
       bones: []
       spriteID: 5eb3b35234786c140b48c0a2dad7f6d8
       internalID: 647660399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effects Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 95
+        width: 269
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d1de6e089a8da84693894f69f44eb40
+      internalID: -543980863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effects Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 95
+        width: 269
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ec9cdd25238d924fac00badad1d0b93
+      internalID: 617884438
       vertices: []
       indices: 
       edges: []
@@ -183,6 +225,8 @@ TextureImporter:
     nameFileIdTable:
       Effects Sheet_0: -1814177814
       Effects Sheet_1: 647660399
+      Effects Sheet_2: -543980863
+      Effects Sheet_3: 617884438
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

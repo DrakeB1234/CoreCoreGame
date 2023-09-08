@@ -10,8 +10,8 @@ public class CameraFollow : MonoBehaviour
     private float minY;
     [SerializeField]
     private float maxY;
-    [SerializeField]
-    private Transform target;
+    
+    public Transform target;
 
     [HideInInspector]
     public Vector3 newPos;

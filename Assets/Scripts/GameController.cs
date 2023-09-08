@@ -18,11 +18,19 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private CoreController coreController;
 
+    private Camera mainCamera;
+    private CameraFollow cameraFollowScript;
+
     private float currentGameTime;
     private int currentStage;
 
     private void Awake() 
     {
+        Application.targetFrameRate = 60;
+
+        mainCamera = Camera.main;
+        cameraFollowScript = mainCamera.GetComponent<CameraFollow>();
+        
         StartCoroutine("GameCountdown");    
     }
 
@@ -81,7 +89,7 @@ public class GameController : MonoBehaviour
         {
             yield return new WaitForSeconds(laserSpawnTime);
 
-            Instantiate(laserPrefab, corePos);
+            Instantiate(laserPrefab, coreParentPos);
         }
     }
 
@@ -99,6 +107,9 @@ public class GameController : MonoBehaviour
     {
         // Destroy Function
         StopAllCoroutines();
+
+        // Move camera target to core
+        cameraFollowScript.target = corePos; 
 
         // Stop core random animations, start death animation
         coreController.DeathAnimation();

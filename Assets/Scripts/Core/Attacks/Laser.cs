@@ -4,8 +4,6 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     [SerializeField]
-    private LineRenderer lineRenderer;
-    [SerializeField]
     private GameObject aimLaserPrefab;
     [SerializeField]
     private float laserFireDelay;
@@ -13,11 +11,11 @@ public class Laser : MonoBehaviour
     private float laserDestroyTime;
     [SerializeField]
     private Transform endPointParentPos;
-    [SerializeField]
-    private Transform endPointPos;
 
+    [HideInInspector]
     public Vector3 fireDirection;
-    
+
+    private Animator animator;
     private RaycastHit2D hit;
     private Vector3 _playerPos;
     private bool laserOn = false;
@@ -27,6 +25,7 @@ public class Laser : MonoBehaviour
     {
         var obj = Instantiate(aimLaserPrefab, transform.position, Quaternion.identity);
         obj.GetComponent<AimLaser>().laserScript = this;
+        animator = GetComponent<Animator>();
     }
 
     private void Update() 
@@ -61,8 +60,9 @@ public class Laser : MonoBehaviour
         // Calculates the proper angle given two points (object pos, and player pos), converts from radian to degrees for proper angle value
         endPointParentPos.eulerAngles = new Vector3(0,0, Mathf.Atan2(_playerPos.y - transform.position.y, _playerPos.x - transform.position.x) * Mathf.Rad2Deg);
 
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, endPointPos.position);
+        // Set animator trigger/ bool
+        animator.SetBool("isFire", true);
+        animator.SetTrigger("fireTrigger");
 
         Invoke("DestroyObj", laserDestroyTime);
     }
